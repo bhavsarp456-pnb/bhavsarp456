@@ -1,0 +1,466 @@
+
+>>> import re
+>>>
+>>> dir(re)
+['DEBUG', 'DOTALL', 'I', 'IGNORECASE', 'L', 'LOCALE', 'M', 'MULTILINE', 'S', 'Scanner', 'T', 'TEMPLATE', 'U', 'UNICODE', 'VERBOSE', 'X', '_MAXCACHE', '__all__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '__version__', '_alphanum', '_cache', '_cache_repl', '_compile', '_compile_repl', '_expand', '_locale', '_pattern_type', '_pickle', '_subx', 'compile', 'copy_reg', 'error', 'escape', 'findall', 'finditer', 'match', 'purge', 'search', 'split', 'sre_compile', 'sre_parse', 'sub', 'subn', 'sys', 'template']
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> str1 = "rohan Python Rstforum"
+>>>
+>>>
+>>> x = re.match('r.h..',str1)
+>>>
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>>
+>>>
+>>> x.group()
+'rohan'
+>>>
+>>>
+>>> x = re.match('P....n',str1)
+>>>
+>>> x
+>>>
+>>>
+>>> x = re.match('Python',str1)
+>>>
+>>> x
+>>>
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>>
+>>>
+>>> x = re.search('Python',str1)
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>>
+>>> x.group()
+'Python'
+>>>
+>>>
+>>> x = re.search('P....n',str1)
+>>>
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC7E8>
+>>> x.group()
+'Python'
+>>>
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>>
+>>>
+>>>
+>>> str2 = 'RRRRRRohan Python'
+>>>
+>>> str3 = 'RRRRRRohannnnnn Python'
+>>>
+>>> x = re.match('R+',str2)
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>>
+>>> x.group()
+>>>
+>>>
+>>> x = re.match('R+ohan',str2)
+>>> x.group()
+'RRRRRRohan'
+>>>
+>>>
+>>>
+>>> str3
+'RRRRRRohannnnnn Python'
+>>>
+>>> x = re.match('R+ohan+',str3)
+>>>
+>>> x.group()
+'RRRRRRohannnnnn'
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>> x = re.match('.+',str1)
+>>>
+>>>
+>>> x.group()
+'rohan Python Rstforum'
+>>>
+>>>
+>>>
+>>> x = re.match('.+f',str1)
+>>>
+>>> x.group()
+'rohan Python Rstf'
+>>>
+>>>
+>>> x = re.match('.+o',str1)
+>>>
+>>> x.group()
+'rohan Python Rstfo'
+>>>
+>>>
+>>>
+>>>
+>>> x = re.match('.+?o',str1)
+>>> x.group()
+'rohan Pytho'
+>>>
+>>>
+>>>
+>>>
+>>> str4 = "Rohan12345!@#$!@#$ Python"
+>>>
+>>> x = re.match('Roha\w',str4)
+>>>
+>>>
+>>> x.group()
+'Rohan'
+>>>
+>>> x = re.match('Rohan\w',str4)
+>>> x.group()
+'Rohan1'
+>>>
+>>> x = re.match('Roha\d',str4)
+>>>
+>>> x
+>>>
+>>> x = re.match('Rohan12\d',str4)
+>>>
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>> x.group()
+'Rohan123'
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>> str5 = "rohan      Pythonn"
+>>>
+>>> x = re.match('rohan\sPyt',str1)
+>>>
+>>> x.group()
+'rohan Pyt'
+>>>
+>>>
+>>> x = re.match('rohan\sPyt',str5)
+>>> x.group()
+'rohan\tPyt'
+>>>
+>>>
+>>> x = re.match('R[a-d]han',str1)
+>>> x.group()
+'rohan'
+>>>
+>>>
+>>> x = re.match('R[a-e]han',str1)
+>>>
+>>> x
+>>>
+>>>
+>>>
+>>>
+>>> str7 = "rohan@123 and amit@456 are the 2 IDS"
+>>>
+>>>
+>>> x = re.search('[a-z]+@\d\d\d',str7)
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC7E8>
+>>>
+>>> x.group()
+'ohan@123'
+>>>
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>> x = re.match('rohan',str1)
+>>> x.group()
+'rohan'
+>>>
+>>>
+>>> x = re.match('Rohan',str1)
+>>> x
+>>>
+>>> x = re.match('rohan',str1,re.I)
+>>>
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>>
+>>> x.group()
+'rohan'
+>>>
+>>>
+>>>
+>>> str7
+'rohan@123 and Amit@456 are the 2 IDS'
+>>>
+>>> x = re.search('[a-z]+@\d\d\d',str7,re.I)
+>>> x.group()
+'rohan@123'?
+>>>
+>>>
+>>> x = re.findall('[a-z]+@\d\d\d',str7,re.I)
+>>>
+>>> x
+['rohan@123', 'Amit@456']
+>>>
+>>>
+>>>
+>>>
+>>> str6
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'str6' is not defined
+>>> str5
+'rohan\tPythonn'
+>>> str4
+'Rohan12345!@#$!@#$ Python'
+>>>
+>>>
+>>>
+>>> str4
+'Rohan12345!@#$!@#$ Python'
+>>>
+>>>
+>>>
+>>> x = re.match('rohan\d',str4)
+>>> x.group()
+'Rohan1'
+>>>
+>>> x = re.match('rohan[0-9]',str4)
+>>> x.group()
+'rohan1'
+>>>
+>>> x = re.match('rohan[1-5]',str4)
+>>> x.group()
+'rohan1'
+>>>
+>>>
+>>> x = re.match('rohan[5-9]',str4)
+>>> x
+>>>
+>>>
+>>> str7
+'rohan@123 and Amit@456 are the 2 IDS'
+>>>
+>>>
+>>>
+>>>
+>>> str7 = 'rohan@12 and Amit@456 are the 2 IDS'
+>>>
+>>>
+>>>
+>>> x = re.findall('[a-z]+@\d{3}',str7,re.I)
+>>> x
+['Amit@456']
+>>>
+>>>
+>>>
+>>> x = re.findall('[a-z]+@\d{1-3}',str7,re.I)
+>>> x
+[]
+>>>
+>>>
+>>> x = re.findall('[a-z]+@\d{1,3}',str7,re.I)
+>>> x
+['rohan@12', 'Amit@456']
+>>>
+>>>
+>>> str7 = 'rohan@12 and Amit@456789 are the 2 IDS'
+>>>
+>>> x = re.findall('[a-z]+@\d{1,3}',str7,re.I)
+>>> x
+['rohan@12', 'Amit@456']
+>>>
+>>>
+>>> x = re.findall('[a-z]+@\d{1,3} ',str7,re.I)
+>>> x
+['rohan@12 ']
+>>>
+>>> x = re.findall('[a-z]+@\d{2,} ',str7,re.I)
+>>>
+>>> x
+['rohan@12 ', 'Amit@456789 ']
+>>>
+>>>
+>>>
+>>> str2
+'RRRRRRohan Python'
+>>>
+>>>
+>>>
+>>> str10 = 'RRRohhhan Pythonn'
+>>>
+>>>
+>>> x = re.match('RRRoh+an',str10)
+>>>
+>>> x.group()
+'RRRohhhan'
+>>>
+>>>
+>>> # + says preceeding char should come 1 or more times
+...
+>>>
+>>>
+>>> x = re.match('RRRohhha+n',str10)
+>>>
+>>> x.group()
+'RRRohhhan'
+>>>
+>>>
+>>> str10
+'RRRohhhan Pythonn'
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>> x = re.match('Rohi+an',str1)
+>>>
+>>> x
+>>>
+>>>
+>>> x = re.match('roha+n',str1)
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC780>
+>>>
+>>> x.group()
+'rohan'
+>>>
+>>> x = re.match('roha*n',str1)
+>>> x.group()
+'rohan'
+>>>
+>>> # * says preceeding char can come zero or more times
+...
+>>>
+>>>
+>>>
+>>> str2
+'RRRRRRohan Python'
+>>>
+>>>
+>>> x = re.match('R*',str2)
+>>> x.group()
+'RRRRR'
+>>>
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>> x = re.match('roha*n',str1)
+>>> x.group()
+'rohan'
+>>>
+>>>
+>>>
+>>>
+>>> str11 = '''Hello world
+... how r you'''
+>>>
+>>>
+>>> str11
+'Hello world\nhow r you'
+>>>
+>>>
+>>> x = re.match('.+',str11)
+>>> x.group()
+'Hello world'
+>>>
+>>>
+>>> x = re.match('.+',str11,re.DOTALL)
+>>> x.group()
+'Hello world\nhow r you'
+>>>
+>>>
+>>>
+>>>
+>>> x = re.match('.*',str11,re.DOTALL)
+>>> x.group()
+'Hello world\nhow r you'
+>>>
+>>>
+>>>
+>>>
+>>> str1
+'rohan Python Rstforum'
+>>>
+>>>
+>>>
+>>> x = re.search('P....n',str1)
+>>> x.group()
+'Python'
+>>>
+>>>
+>>> x = re.sub('P....n','Automation',str1)
+>>>
+>>> x
+'rohan Automation Rstforum'
+>>>
+>>>
+>>> log = 'My PC has ip 192.16.7.1 and yours has 1.1.1.1'
+>>>
+>>>
+>>>
+>>>
+>>> x = re.findall('\d\d\d.\d\d\d.\d\d\d.\')
+  File "<stdin>", line 1
+    x = re.findall('\d\d\d.\d\d\d.\d\d\d.\')
+                                           ^
+SyntaxError: EOL while scanning string literal
+>>>
+>>>
+>>>
+>>> x = re.findall('\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}',log)
+>>>
+>>> x
+['192.16.7.1', '1.1.1.1']
+>>>
+>>>
+>>> log = 'My PC has ip 123456543234561 and yours has 1.1.1.1'
+>>>
+>>> x = re.findall('\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}',log)
+>>>
+>>> x
+['123456543234561', '1.1.1.1']
+>>>
+>>> x = re.findall('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}',log)
+>>>
+>>> x
+['1.1.1.1']
+>>>
+>>>
+>>> str1 = "rohan+Python"
+>>>
+>>> x = re.match('rohan+Python',str1)
+>>>
+>>> x
+>>>
+>>>
+>>> x = re.match('rohan\+Python',str1)
+>>> x
+<_sre.SRE_Match object at 0x00000000032AC7E8>
+>>>
+>>> x.group()
+'rohan+Python'
+>>>
+>>>
+>>>

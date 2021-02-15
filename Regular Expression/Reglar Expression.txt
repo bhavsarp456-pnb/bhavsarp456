@@ -1,0 +1,59 @@
+Special Characters
+\ - escape special characters
+. - matches any character except new line.
+^ - Matches the start of the string.
+() - creates a capture group and indicates precedence
+Quantifiers
+* - Matches 0 or more (greedy) repetitions of the preceding RE.
+    Greedy means that it will match as many repetitions as possible.
+? - It is only used to stop greedyness for + and *
++ - Matches 1 or more (greedy) repetitions of the preceding RE.
+{m} - exactly m m occurrences
+Special sequences
+\d - Matches any decimal digit; equivalent to the set [0-9] in 
+     bytes patterns or string patterns with the ASCII flag.
+\s - Matches any whitespace character; equivalent to [ \t\n\r\f\v] in
+     bytes patterns or string patterns with the ASCII flag.
+    In string patterns without the ASCII flag, it will match the whole
+ range of Unicode whitespace characters.
+\w - Matches any alphanumeric character; equivalent to [a-zA-Z0-9_]
+     in bytes patterns or string patterns with the ASCII flag.
+     In string patterns without the ASCII flag, it will match therange of Unicode
+     alphanumeric characters (letters pplus underscore).
+     With LOCALE, it will match the set [0-9_] plus characters defined
+     as letters for the current locale.
+
+functions
+match      Match a regular expression pattern to the beginning of a string.
+fullmatch  Match a regular expression pattern to all of a string.
+search    Search a string for the presence of a pattern.
+sub       Substitute occurrences of a pattern found in a string.
+subn      Same as sub, but also return the number of substitutions made.
+findall   Find all occurrences of a pattern in a string.
+
+Some of the functions in this module takes flags as optional parameters:
+I  IGNORECASE  Perform case-insensitive matching.
+S  DOTALL      "." matches any character at all, including the newline.
+
+Practical 
+
+>>> x = "Welcome to RST Forum"
+>>> import re
+>>> y = re.match("Welcome",x)
+>>> y
+<_sre.SRE_Match object; span=(0, 7), match='Welcome'>
+>>> y.group()
+'Welcome'
+>>> y = rematch("w.+? ",x)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'rematch' is not defined
+>>> y = re.match("w.+? ",x)
+>>> y.group()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'NoneType' object has no attribute 'group'
+>>> y = re.match("W.+? ",x)
+>>> y.group()
+'Welcome '
+>>>
