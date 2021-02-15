@@ -1,0 +1,6 @@
+x = int(input("Enter the num1:"))
+y = int(input("Enter the num2:"))
+z = int(input("Enter the num2:"))
+print(f"{x}:Greatest Number" if x>y and x>z else f"{x}:is not Greatest Number")
+print(f"{y}:Greatest Number" if y>x and y>z else f"{y}:is not Greatest Number")
+print(f"{z}:Greatest Number" if z>x and z>y else f"{z}:is not Greatest Number")
