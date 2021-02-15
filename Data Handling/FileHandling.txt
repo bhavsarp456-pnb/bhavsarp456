@@ -1,0 +1,22 @@
+Text Handling 
+
+Read Data from exsisting text files. (Read Mode)
+
+1. Create a text file and put some data in it.
+
+2. Open python interpreter.
+
+3. file = open("Enter the path","r")
+
+4. file.read()
+file.read()
+
+5. file.seek()
+
+6. file.read()
+
+7. file.readines()
+
+8. file.readline()
+
+9. file.close()

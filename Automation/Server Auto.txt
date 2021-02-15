@@ -1,0 +1,10 @@
+sudo apt-get install openssh-ser
+ssh user@server-ip yes/no
+sudo pip3 install paramiko
+sudo nano ssh.py
+import paramiko
+import time 
+print("Waait, creating ssh client")
+ssh_client = paramiko.SSHClient()
+ss_client.connect
+
